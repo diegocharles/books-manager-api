@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+
+  postgres:
+    image: postgres:13.1-alpine
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - net1
+
+  web:
+    build: .
+    entrypoint: ./docker-entrypoint.sh
+    command: /bin/bash -c "bundle exec rails s -b 0.0.0.0 -p 3000"
+    volumes:
+      - .:/application
+      - rails_log:/application/log
+      - rubygems:/bundle
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_HOST: postgres
+    depends_on:
+      - postgres
+    tty: true
+    stdin_open: true
+    networks:
+      - net1
+volumes:
+  postgres:
+  rails_log:
+  rubygems:
+
+networks:
+  net1:
+    external: false
