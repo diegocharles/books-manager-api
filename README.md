@@ -17,6 +17,9 @@ BooksManager API
 5. CI Is fully implemented with Github Actions and Heroku Webhooks.
 6. I'm going to use a paid dyno in Heroku so you guys will be saved from the boot up time. So please let me know once you finished your review so I can disabled the payed dynos. :)
 
+##
+I'm looking forward to discuss the code and explain why I toke some technical decisions :)
+
 ###
 Run in Postman
 
@@ -56,6 +59,7 @@ When not running with Docker:
     `docker-composer exec web rspec`
 
   In case of troubles Just ping Diego Charles via email: diegocharles@me.com
+
 
 
 ### Configuration
