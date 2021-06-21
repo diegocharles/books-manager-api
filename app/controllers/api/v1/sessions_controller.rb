@@ -7,8 +7,8 @@ module Api::V1
       user = User.find_by(external_id: user_params[:external_id])
 
       if user&.authenticate(user_params[:password])
-        JsonWebTokenHelper.encode(user_id: user.id)
-        head :created
+        token = JsonWebTokenHelper.encode(user_id: user.id)
+        render json: { token: token }, status: :created
       else
         render json: { error: 'Bad Credentials' }, status: :unauthorized
       end
