@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/sessions', to: 'sessions#create', as: :session
       resources :users, only: [:create, :show]
-      resources :books, only: [:show] do
+      resources :books, only: [:index, :show] do
         post :borrow
         patch :returnal
       end

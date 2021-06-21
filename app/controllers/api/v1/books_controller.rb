@@ -1,5 +1,9 @@
 class Api::V1::BooksController < ApplicationController
-  before_action :find_book
+  before_action :find_book, except: :index
+
+  def index
+    @books = Book.all
+  end
 
   def borrow
     BorrowService.loan!(book_id: params[:book_id], user_id: params[:user_id])

@@ -48,4 +48,18 @@ RSpec.describe "Api::V1::Books", type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe "GET /api/v1/books" do
+    it "list all the books" do
+      params = {
+        user_id: user.external_id
+      }
+      get api_v1_books_url(book.external_id), headers: headers
+      expect(response).to have_http_status(200)
+
+      json = JSON.parse(response.body)
+      expected_keys = %w(external_id loan_fee title units).sort
+      expect(json['books'].first.keys.sort).to eq(expected_keys)
+    end
+  end
 end
