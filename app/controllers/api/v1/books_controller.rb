@@ -12,7 +12,8 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def returnal
-
+    ReturnalService.process!(user_id: params[:user_id], book_id: params[:book_id])
+    head :ok
   end
 
   private

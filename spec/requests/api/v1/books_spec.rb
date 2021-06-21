@@ -38,4 +38,14 @@ RSpec.describe "Api::V1::Books", type: :request do
       expect(response.body).to include('StandardError')
     end
   end
+
+  describe "PATCH /api/v1/books/:book_id/returnal" do
+    it "works" do
+      params = {
+        user_id: user.external_id
+      }
+      patch api_v1_book_returnal_url(book.external_id), headers: headers, params: params
+      expect(response).to have_http_status(200)
+    end
+  end
 end
