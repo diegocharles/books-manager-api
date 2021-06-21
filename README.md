@@ -2,6 +2,8 @@
 BooksManager API
 ======
 
+[![Specs](https://github.com/diegocharles/books-manager-api/actions/workflows/actions.yml/badge.svg)](https://github.com/diegocharles/books-manager-api/actions/workflows/actions.yml)
+
 ### QUICK IDEAS
 
 1. We don't want to expose database ids which suggests sequencies (ex: User id 1, 2, 3) and that's why we use `external_id` to reference the database record externally.
@@ -15,7 +17,6 @@ BooksManager API
 5. CI Is fully implemented with Github Actions and Heroku Webhooks.
 6. I'm going to use a paid dyno in Heroku so you guys will be saved from the boot up time. So please let me know once you finished your review so I can disabled the payed dynos. :)
 
-![VM and Specs](https://github.com/diegocharles/maybe-backend/workflows/VM%20and%20Specs/badge.svg?branch=development) <br />
 ![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0c7bc986d0beba4ed663) <br />
 
 
