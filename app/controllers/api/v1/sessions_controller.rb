@@ -6,11 +6,11 @@ module Api::V1
     skip_before_action :authorize_request, only: :create
 
     def create
-      @user = User.find_by(external_id: user_params[:external_id])
+      user = User.find_by(external_id: user_params[:external_id])
 
-      if @user&.authenticate(user_params[:password])
-        JsonWebTokenHelper.encode(user_id: @user.id)
-        render status: :created
+      if user&.authenticate(user_params[:password])
+        JsonWebTokenHelper.encode(user_id: user.id)
+        head :created
       else
         render json: { error: 'Bad Credentials' }, status: :unauthorized
       end

@@ -15,7 +15,9 @@
 #
 FactoryBot.define do
   factory :user do
-    amount { 400.0 }
-    external_id { SecureRandom.hex }
+    amount                    { 400.0 }
+    external_id               { SecureRandom.hex }
+    password                  { 'foobar' }
+    password_confirmation     { 'foobar' }
   end
 end

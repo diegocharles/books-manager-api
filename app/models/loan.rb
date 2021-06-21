@@ -26,6 +26,5 @@ class Loan < ApplicationRecord
   belongs_to :book
 
   validates :loaned_at,       presence: true
-  validates :returned_at,     presence: true
   validates :fee,             numericality: { greater_than: 0.0 }
 end

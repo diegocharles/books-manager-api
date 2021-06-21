@@ -12,6 +12,8 @@
 #  external_id  :string
 #
 class Book < ApplicationRecord
+  include Externable
+
   has_many :loans
 
   validates :active_loans,  numericality: { greater_than: 0 }

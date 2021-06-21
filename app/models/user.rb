@@ -14,6 +14,7 @@
 #  index_users_on_external_id  (external_id)
 #
 class User < ApplicationRecord
+  include Externable
   has_secure_password
 
   has_many :loans

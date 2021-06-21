@@ -1,3 +1,4 @@
+# :nocov:
 class ApplicationController < ActionController::API
   include ActionController::MimeResponds
 
@@ -39,3 +40,4 @@ class ApplicationController < ActionController::API
     render json: { error: 'Bad credentials' }, status: 401
   end
 end
+# :nocov:

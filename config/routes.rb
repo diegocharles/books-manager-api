@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/sessions', to: 'sessions#create', as: :session
+      resources :users, only: :create
+      resources :books do
+        patch :borrow
+        patch :returnal
+      end
     end
   end
 end
