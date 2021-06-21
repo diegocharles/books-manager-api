@@ -21,11 +21,12 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
 end

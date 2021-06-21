@@ -12,4 +12,10 @@
 #  external_id  :string
 #
 class Book < ApplicationRecord
+  has_many :loans
+
+  validates :active_loans,  numericality: { greater_than: 0 }
+  validates :loan_fee,      numericality: { greater_than: 0.0 }
+  validates :title,         presence: true
+  validates :units,         numericality: { greater_than: 0 }
 end

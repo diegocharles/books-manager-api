@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 2021_06_20_005410) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "external_id"
     t.string "password_digest"
     t.decimal "amount", precision: 10, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["external_id"], name: "index_users_on_external_id"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "loans", "books"

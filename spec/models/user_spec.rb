@@ -15,12 +15,14 @@
 #  index_users_on_external_id  (external_id)
 #  index_users_on_username     (username)
 #
-class User < ApplicationRecord
-  has_secure_password
+require 'rails_helper'
 
-  has_many :loans
-
-  validates :username, presence: true, uniqueness: true
-  validates :password, presence: true
-  validates :amount, numericality: { greater_than: 0 }
+RSpec.describe User, type: :model do
+  context 'Validations and associations' do
+    it { is_expected.to have_many(:loans) }
+    it { is_expected.to validate_numericality_of(:amount) }
+    it { is_expected.to validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:username) }
+    it { is_expected.to validate_uniqueness_of(:username) }
+  end
 end
