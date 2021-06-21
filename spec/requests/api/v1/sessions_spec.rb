@@ -20,6 +20,8 @@ RSpec.describe "Api::V1::Sessions", type: :request do
 
       post api_v1_session_url(params)
       expect(response).to have_http_status(201)
+      json = JSON.parse(response.body)
+      expect(json['token']).to_not be_nil
     end
 
     it "fails when the given credentials are bad" do

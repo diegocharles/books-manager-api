@@ -13,6 +13,8 @@ RSpec.describe "Api::V1::Users", type: :request do
 
       post api_v1_users_path(params)
       expect(response).to have_http_status(201)
+      json = JSON.parse(response.body)
+      expect(json['external_id']).to_not be_nil
     end
 
     it "returns the error when it fails" do
