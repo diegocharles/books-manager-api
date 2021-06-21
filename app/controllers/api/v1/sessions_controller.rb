@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
-
 module Api::V1
   class SessionsController < ApplicationController
     skip_before_action :authorize_request, only: :create
