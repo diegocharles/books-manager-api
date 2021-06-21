@@ -16,6 +16,8 @@ group :development, :test do
   gem 'annotate'
   gem 'awesome_print'
   gem 'factory_bot_rails'
+  gem 'rswag'
+  gem 'rswag-specs'
 end
 
 group :development do

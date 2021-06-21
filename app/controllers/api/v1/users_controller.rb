@@ -11,6 +11,11 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(external_id: params[:id])
+    @loans = @user.loans
+  end
+
   private
 
   def user_params
