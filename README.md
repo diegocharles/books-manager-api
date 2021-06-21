@@ -13,11 +13,14 @@ BooksManager API
   RDS
   RDS Proxy (In case we have too many parallel connections on the database).
 3. Because of time I won't integrate Swagger. I'll attach one Postman collection instead.
-4. I won't implement Rubocop on this project, but I would in real project.
+4. I won't implement Rubocop on this project but I would in real project.
 5. CI Is fully implemented with Github Actions and Heroku Webhooks.
 6. I'm going to use a paid dyno in Heroku so you guys will be saved from the boot up time. So please let me know once you finished your review so I can disabled the payed dynos. :)
 
-![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0c7bc986d0beba4ed663) <br />
+###
+Run in Postman
+
+Just import the postman collection file at the root folder from the project.
 
 
 BooksManager API application

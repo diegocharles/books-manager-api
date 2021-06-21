@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "1a91b846-c08b-4e2f-aafc-f6d841ab4c05",
+		"name": "Book Manager API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Folder",
+			"item": []
+		},
+		{
+			"name": "Create new Session",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"externalId\": \"c6ea369849\",\n        \"password\": \"Simple!123\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/sessions",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"amount\": 100,\n        \"password\": \"Simple!123\",\n        \"password_confirmation\": \"Simple!123\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/users",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query User's balance and loans",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/users/c6ea369849",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"c6ea369849"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User with zero balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/users/349068ca9d",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"349068ca9d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_host}}/api/v1/books",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrow a book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"c6ea369849\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/books/351047991b/borrow",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"351047991b",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return a borrowed Book",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"c6ea369849\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/books/351047991b/returnal",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"351047991b",
+						"returnal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Loans by Book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"book_id\": \"351047991b\",\n    \"from_date\": \"2021-6-21\",\n    \"to_date\": \"2021-6-21\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/api/v1/loans",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"loans"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE2MjY5MDE3MTJ9.w-JpqZpMOK2mwypaEpdmrlQu16BvQfIh_o4wOJd6AKM",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_host",
+			"value": "http://books-manager-api.herokuapp.com"
+		}
+	]
+}
