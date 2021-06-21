@@ -6,6 +6,18 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.minimum_coverage 70
+formatters = [SimpleCov::Formatter::Console]
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(formatters)
+
+SimpleCov::Formatter::Console.show_covered = true
+
+SimpleCov.start do
+  add_filter '/spec/'
+end
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
