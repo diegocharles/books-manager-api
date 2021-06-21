@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post '/sessions', to: 'sessions#create', as: :session
       resources :users, only: :create
       resources :books do
-        patch :borrow
+        post :borrow
         patch :returnal
       end
     end

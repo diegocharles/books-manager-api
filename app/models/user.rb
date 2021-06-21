@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
   has_many :loans
 
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
   validates :amount, numericality: { greater_than: 0 }
 end

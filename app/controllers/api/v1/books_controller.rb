@@ -2,7 +2,13 @@ class Api::V1::BooksController < ApplicationController
   before_action :find_book
 
   def borrow
+    BorrowService.loan!(book_id: params[:book_id], user_id: params[:user_id])
+    head :created
 
+  rescue NoBalanceError
+    render json: { errors: 'User has no balance' }, status: :unprocessable_entity
+  rescue StandardError => e
+    render json: { errors: e.message }, status: :unprocessable_entity
   end
 
   def returnal
@@ -12,6 +18,6 @@ class Api::V1::BooksController < ApplicationController
   private
 
   def find_book
-    Book.find_by(external_id: params[:external_id])
+    Book.find_by(external_id: params[:book_id])
   end
 end
